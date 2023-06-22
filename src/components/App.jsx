@@ -1,16 +1,41 @@
-export const App = () => {
+import React from "react";
+import { nanoid } from 'nanoid'
+import { Component } from "react";
+import FormInput from "./FormInput";
+
+
+
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: ''
+  }
+
+  onFormSubmit(){
+
+  }
+
+  onNameInput = ({target}) => {
+    this.setState({
+        name: target.value
+    })
+  }
+ 
+render(){
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+    <form>
+      <FormInput
+      onFormSubmit = {this.onFormSubmit}
+      onNameInput = {this.onNameInput}
+      >
+      </FormInput>
+    </form>
+      
+     <label>
+          Contacts
+     </label>
+     </>
   );
+};
 };
