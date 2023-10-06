@@ -1,9 +1,15 @@
-
-
-export default function ContactsList () {
+export default function ContactsList ({contacts}) {
 return(
-    <label htmlFor="">
-        Contacts
-    </label>
+    <div>
+        <label>
+            Contacts:
+        </label>
+        <ul>
+            {contacts.map(item => (
+                    <li key={item.id}>{item.name} : {item.number}</li>
+            ))}
+        </ul>
+    </div>
+    
     )
 }

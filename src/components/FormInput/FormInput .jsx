@@ -1,26 +1,34 @@
-// import PropTypes from 'prop-types';
 
-export default function FormInput({onFormSubmit, onNameInput}) {
+export default function FormInput({onFormSubmit, onNameInput, onNumberInput}) {
     
     return(
-      <div>
-        <label htmlFor="">
-          Phonebook
-        </label>
-        <input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={(e) => onNameInput(e)}
-          />
-          <button
-            type='button'
-            onClick={onFormSubmit}
-            >
-            Add contact
+       <form>
+        <div>
+            <label>
+              Phonebook
+            </label>
+            <input
+              type="text"
+              name="name"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+              onChange={evt => {onNameInput(evt.target.value)}}
+              />
+          </div>
+          <div>
+            <label>
+              Number
+            </label>
+            <input
+            type="tel"
+            name="number"
+            required
+            onChange={evt => onNumberInput(evt.target.value)}
+            />
+          </div>
+          <button type='submit' onClick={(e) => onFormSubmit(e)}>
+              Add contact
           </button>
-      </div>
+      </form>
     )
 }

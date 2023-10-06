@@ -4,40 +4,52 @@ import { Component } from "react";
 import FormInput from "./FormInput";
 import ContactsList from "./ContactsList";
 
-//Кожен контакт повинен бути об'єктом з властивостями name та id.
-//Для генерації ідентифікаторів використовуй будь-який відповідний пакет, наприклад nanoid. 
-//Після завершення цього кроку, застосунок повинен виглядати приблизно так.
-
 export class App extends Component {
+  
   state = {
     contacts: [],
-    name: ''
+    name: '',
+    number: '',
+    filter: ''
   }
 
-  onFormSubmit(){
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    const newItem = {name: this.state.name,
+                    id: nanoid(),
+                    number: this.state.number};
 
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newItem]
+    }));
+      
   }
 
-  onNameInput = ({target}) => {
+  onNameInput = newName => {  
     this.setState({
-        name: target.value
+        name: newName
+    })
+  }
+
+  onNumberInput = newNamber => {  
+    this.setState({
+        number: newNamber
     })
   }
  
 render(){
   return (
     <>
-      <form>
-        <FormInput
+      <FormInput
         onFormSubmit = {this.onFormSubmit}
-        onNameInput = {this.onNameInput}>
-        </FormInput>
-      </form>
-      <ContactsList>
-
+        onNameInput = {this.onNameInput}
+        onNumberInput = {this.onNumberInput}
+      >
+      </FormInput>
+      <ContactsList
+        contacts = {this.state.contacts}>
       </ContactsList>
-    
-     </>
+    </>
   );
 };
 };
