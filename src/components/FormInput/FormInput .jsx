@@ -1,12 +1,10 @@
 
-export default function FormInput({onFormSubmit, onNameInput, onNumberInput}) {
+export default function FormInput({onFormSubmit, onNameInput, onNumberInput, }) {
     
     return(
-       <form>
+       <form>Phonebook
         <div>
-            <label>
-              Phonebook
-            </label>
+            <label>Name: </label>
             <input
               type="text"
               name="name"
@@ -16,9 +14,7 @@ export default function FormInput({onFormSubmit, onNameInput, onNumberInput}) {
               />
           </div>
           <div>
-            <label>
-              Number
-            </label>
+            <label>Number: </label>
             <input
             type="tel"
             name="number"

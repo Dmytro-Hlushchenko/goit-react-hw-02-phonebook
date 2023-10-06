@@ -1,12 +1,15 @@
-export default function ContactsList ({contacts}) {
+export default function ContactsList ({contacts, onInputFilterName}) {
 return(
     <div>
-        <label>
-            Contacts:
-        </label>
+        <label>Contacts</label>
+            <div>
+                <label>Find contacts by name: </label>
+                <input type="text" 
+                onChange={evt => onInputFilterName(evt.target.value)}/>
+            </div>
         <ul>
             {contacts.map(item => (
-                    <li key={item.id}>{item.name} : {item.number}</li>
+                    <li key={item.id}>{item.name}: {item.number}</li>
             ))}
         </ul>
     </div>
