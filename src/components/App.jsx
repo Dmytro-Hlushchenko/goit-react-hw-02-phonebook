@@ -18,6 +18,7 @@ export class App extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state.filter)
     const newItem = {name: this.state.name,
                     id: nanoid(),
                     number: this.state.number};
@@ -27,29 +28,32 @@ export class App extends Component {
       
   }
 
-  onContactInput = (key, value) => {
+  onFormInput = (key, value) => {
     this.setState({
     [key]:value
     })
   }
-  
-  onFilterName = newFilter => {
-    this.setState({
-      filter: newFilter,
-    })
-  }
- 
+
+
+   filterVisibleContacts = () => {
+    const {contacts, filter} = this.state;
+    const lowerCaseFilter = filter.toLocaleLowerCase();
+    return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(lowerCaseFilter));
+   };
+   
 render(){
+  const visibleContacts = this.filterVisibleContacts();
+   
   return (
     <>
       <FormInput
         onFormSubmit = {this.onFormSubmit}
-        onContactInput = {this.onContactInput}
+        onContactInput = {this.onFormInput}
         >
       </FormInput>
       <ContactsList
-        contacts = {this.state.contacts}
-        onInputFilterName = {this.onFilterName}>
+        contacts = {visibleContacts}
+        onInputFilterName = {this.onFormInput}>
       </ContactsList>
     </>
   );

@@ -5,7 +5,7 @@ return(
             <div>
                 <label>Find contacts by name: </label>
                 <input type="text" 
-                onChange={evt => onInputFilterName(evt.target.value)}/>
+                onChange={evt => onInputFilterName('filter', evt.target.value)}/>
             </div>
         <ul>
             {contacts.map(item => (
