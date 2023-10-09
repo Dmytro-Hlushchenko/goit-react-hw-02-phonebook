@@ -21,22 +21,15 @@ export class App extends Component {
     const newItem = {name: this.state.name,
                     id: nanoid(),
                     number: this.state.number};
-
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newItem]
     }));
       
   }
 
-  onNameInput = newName => {  
+  onContactInput = (key, value) => {
     this.setState({
-        name: newName
-    })
-  }
-
-  onNumberInput = newNamber => {  
-    this.setState({
-        number: newNamber
+    [key]:value
     })
   }
   
@@ -51,8 +44,8 @@ render(){
     <>
       <FormInput
         onFormSubmit = {this.onFormSubmit}
-        onNameInput = {this.onNameInput}
-        onNumberInput = {this.onNumberInput}>
+        onContactInput = {this.onContactInput}
+        >
       </FormInput>
       <ContactsList
         contacts = {this.state.contacts}

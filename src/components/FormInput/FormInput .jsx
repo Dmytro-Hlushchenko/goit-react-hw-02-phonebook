@@ -1,5 +1,5 @@
 
-export default function FormInput({onFormSubmit, onNameInput, onNumberInput, }) {
+export default function FormInput({onContactInput, onFormSubmit,}) {
     
     return(
        <form>Phonebook
@@ -9,8 +9,8 @@ export default function FormInput({onFormSubmit, onNameInput, onNumberInput, }) 
               type="text"
               name="name"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-              onChange={evt => {onNameInput(evt.target.value)}}
+              require
+              onChange={evt => onContactInput ('name', evt.target.value)}
               />
           </div>
           <div>
@@ -19,7 +19,7 @@ export default function FormInput({onFormSubmit, onNameInput, onNumberInput, }) 
             type="tel"
             name="number"
             required
-            onChange={evt => onNumberInput(evt.target.value)}
+            onChange={evt => onContactInput ('number', evt.target.value)}
             />
           </div>
           <button type='submit' onClick={(e) => onFormSubmit(e)}>
