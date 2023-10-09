@@ -1,9 +1,17 @@
-export default function ContactsList ({contacts}) {
-return(
+import ContactItem from "components/ContactItem/ContactItem"
+
+
+export default function ContactsList ({contacts, onDelete}) {
+
+    return(
     <div>
         <ul>
             {contacts.map(item => (
-                    <li key={item.id}>{item.name}: {item.number}</li>
+                <li key = {item.id}>
+                    <ContactItem
+                    contact = {item}
+                    ></ContactItem>
+                </li>
             ))}
         </ul>
     </div>

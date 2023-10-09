@@ -1,9 +1,9 @@
 import React from "react";
-import { nanoid } from 'nanoid'
 import { Component } from "react";
 import FormInput from "./FormInput";
 import ContactsList from "./ContactsList";
 import Filter from "./Filter/Filter";
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   
@@ -19,9 +19,9 @@ export class App extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.filter)
-    const newItem = {name: this.state.name,
+    const newItem = {
                     id: nanoid(),
+                    name: this.state.name,
                     number: this.state.number};
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newItem]
@@ -41,6 +41,10 @@ export class App extends Component {
     const lowerCaseFilter = filter.toLocaleLowerCase();
     return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(lowerCaseFilter));
    };
+
+   deleteContact = () => {
+
+   }
    
 render(){
   const visibleContacts = this.filterVisibleContacts();
@@ -58,6 +62,7 @@ render(){
         onInputFilterName={this.onFormInput}>
         </Filter>
         <ContactsList
+          onDelete = {this.deleteContact}
           contacts = {visibleContacts}
           onInputFilterName = {this.onFormInput}>
         </ContactsList>
