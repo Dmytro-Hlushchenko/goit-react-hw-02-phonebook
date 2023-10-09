@@ -2,7 +2,7 @@
 export default function FormInput({onContactInput, onFormSubmit,}) {
     
     return(
-       <form>Phonebook
+       <form>
         <div>
             <label>Name: </label>
             <input

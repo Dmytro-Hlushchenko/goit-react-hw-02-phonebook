@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { Component } from "react";
 import FormInput from "./FormInput";
 import ContactsList from "./ContactsList";
+import Filter from "./Filter/Filter";
 
 export class App extends Component {
   
@@ -45,17 +46,22 @@ render(){
   const visibleContacts = this.filterVisibleContacts();
    
   return (
-    <>
-      <FormInput
-        onFormSubmit = {this.onFormSubmit}
-        onContactInput = {this.onFormInput}
-        >
-      </FormInput>
-      <ContactsList
-        contacts = {visibleContacts}
-        onInputFilterName = {this.onFormInput}>
-      </ContactsList>
-    </>
+    <div>
+      <h1>Phonebook</h1>
+        <FormInput
+          onFormSubmit = {this.onFormSubmit}
+          onContactInput = {this.onFormInput}
+          >
+        </FormInput>
+        <h2>Contacts</h2>
+        <Filter
+        onInputFilterName={this.onFormInput}>
+        </Filter>
+        <ContactsList
+          contacts = {visibleContacts}
+          onInputFilterName = {this.onFormInput}>
+        </ContactsList>
+    </div>
   );
 };
 };
