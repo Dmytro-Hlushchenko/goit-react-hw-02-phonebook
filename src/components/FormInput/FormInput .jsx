@@ -1,29 +1,34 @@
+import { Formik, Field, Form } from 'formik';
+import { nanoid } from 'nanoid';
 
-export default function FormInput({onContactInput, onFormSubmit,}) {
+
+export default function FormInput({onFormSubmit,}) {
     
     return(
-       <form>
-        <div>
-            <label>Name: </label>
-            <input
-              type="text"
-              name="name"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              onChange={evt => onContactInput ('name', evt.target.value)}
-              />
-          </div>
-          <div>
-            <label>Number: </label>
-            <input
-            type="tel"
+      <Formik
+        initialValues={{
+          id: nanoid(),
+          name: '',
+          number: '',
+        }}
+         onSubmit={values => {onFormSubmit(values)}}
+      >
+        <Form>
+          <label>Name:
+          <Field 
+            name="name"
+            placeholder="Jane" />
+          </label>
+
+          <label>Number:
+          <Field 
             name="number"
-            required
-            onChange={evt => onContactInput ('number', evt.target.value)}
-            />
-          </div>
-          <button type='submit' onClick={(e) => onFormSubmit(e)}>
-              Add contact
-          </button>
-      </form>
+            placeholder="658-58-69"
+            type="number"
+          />
+          </label>
+          <button type="submit">Add contact</button>
+        </Form> 
+    </Formik>
     )
 }
