@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import FormInput from "./FormInput";
 import ContactsList from "./ContactsList";
-import Filter from "./Filter/Filter";
+import Filter from "./Filter";
 
 export class App extends Component {
   
