@@ -1,6 +1,5 @@
 import ContactItem from "components/ContactItem/ContactItem"
 
-
 export default function ContactsList ({contacts, onDelete}) {
 
     return(
@@ -10,7 +9,9 @@ export default function ContactsList ({contacts, onDelete}) {
                 <li key = {item.id}>
                     <ContactItem
                     contact = {item}
-                    ></ContactItem>
+                    onDelete = {onDelete}
+                    >
+                    </ContactItem>
                 </li>
             ))}
         </ul>

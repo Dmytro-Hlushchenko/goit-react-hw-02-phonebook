@@ -12,13 +12,12 @@ export class App extends Component {
     {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
-    name: '',
-    number: '',
     filter: '',
   }
 
   onFormSubmit = (e) => {
     e.preventDefault();
+
     const newItem = {
                     id: nanoid(),
                     name: this.state.name,
@@ -35,16 +34,17 @@ export class App extends Component {
     })
   }
 
-
    filterVisibleContacts = () => {
     const {contacts, filter} = this.state;
     const lowerCaseFilter = filter.toLocaleLowerCase();
     return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(lowerCaseFilter));
    };
 
-   deleteContact = () => {
-
-   }
+   deleteContact = deleteItemId => {
+      this.setState(prevState => ({
+        contacts: prevState.contacts.filter(item => item.id !== deleteItemId)
+      }) )
+   };
    
 render(){
   const visibleContacts = this.filterVisibleContacts();
