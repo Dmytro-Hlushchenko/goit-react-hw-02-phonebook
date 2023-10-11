@@ -14,8 +14,16 @@ export class App extends Component {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
     filter: '',
   }
-
+  
   onFormSubmit = (e) => {
+    console.log(e)
+    const isExist = this.state.contacts.some(
+      ({name}) => name === e.name);
+        
+    if (isExist) {
+      alert(`$This Name is already in contacts.`);
+      return
+    }
       this.setState(prevState => ({
       contacts: [...prevState.contacts, e]
     }));
