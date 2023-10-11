@@ -1,20 +1,20 @@
 import ContactItem from "components/ContactItem/ContactItem"
+import { List, Item } from "./ComtactList.styled"
 
 export default function ContactsList ({contacts, onDelete}) {
 
     return(
     <div>
-        <ul>
+        <List>
             {contacts.map(item => (
-                <li key = {item.id}>
+                <Item key = {item.id}>
                     <ContactItem
-                    contact = {item}
-                    onDelete = {onDelete}
-                    >
+                        contact = {item}
+                        onDelete = {onDelete}>
                     </ContactItem>
-                </li>
+                </Item>
             ))}
-        </ul>
+        </List>
     </div>
     
     )

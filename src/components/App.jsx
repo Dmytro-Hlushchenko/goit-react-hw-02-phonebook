@@ -16,7 +16,6 @@ export class App extends Component {
   }
   
   onFormSubmit = (e) => {
-    console.log(e)
     const isExist = this.state.contacts.some(
       ({name}) => name === e.name);
         
