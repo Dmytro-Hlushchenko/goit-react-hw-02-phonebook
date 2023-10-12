@@ -15,16 +15,16 @@ export class App extends Component {
     filter: '',
   }
   
-  onFormSubmit = (e) => {
+  onFormSubmit = (data) => {
     const isExist = this.state.contacts.some(
-      ({name}) => name === e.name);
+      ({name}) => name.toLocaleLowerCase() === data.name.toLocaleLowerCase());
         
     if (isExist) {
       alert(`$This Name is already in contacts.`);
       return
     }
       this.setState(prevState => ({
-      contacts: [...prevState.contacts, e]
+      contacts: [...prevState.contacts, data]
     }));
   
   }
@@ -64,8 +64,7 @@ render(){
         <ContactsList
           onDelete = {this.deleteContact}
           contacts = {visibleContacts}
-          onInputFilterName = {this.onFormInput}>
-        </ContactsList>
+        />
     </div>
   );
 };
